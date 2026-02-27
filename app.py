@@ -17,8 +17,8 @@ except Exception:
 # --- 2. 界面配置 ---
 st.set_page_config(page_title="Marshall's AI Translator", page_icon="🌍", layout="wide")
 
-st.title("🌍 自动化 Excel 语言转换站")
-st.markdown("针对 **合并单元格**、**多Sheet** 及 **物流/IT 术语** 进行了专项优化。")
+st.title("🌍 Marshall's Excel workstation")
+st.markdown("针对 **合并单元格**、**多Sheet** 进行了专项优化。")
 
 # --- 3. 语言映射配置 ---
 LANG_OPTIONS = {
@@ -34,7 +34,7 @@ LANG_OPTIONS = {
 with st.sidebar:
     st.header("⚙️ 翻译配置")
     source_lang = st.selectbox("1. 原始语言 (源)", list(LANG_OPTIONS.keys()), index=0)
-    target_lang = st.selectbox("2. 目标语言 (译)", list(LANG_OPTIONS.keys()), index=2) # 默认选阿拉伯语
+    target_lang = st.selectbox("2. 目标语言 (译)", list(LANG_OPTIONS.keys()), index=1) # 默认选阿拉伯语
     
     st.write("---")
     st.info(f"模式：从 **{source_lang}** 翻译至 **{target_lang}**")
@@ -121,4 +121,5 @@ if uploaded_file:
             data=out_buffer.getvalue(),
             file_name=f"{LANG_OPTIONS[target_lang]}_{uploaded_file.name}",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
         )
